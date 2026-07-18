@@ -9,30 +9,30 @@ class LoginView(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        ctk.set_appearance_mode("Light")
+        ctk.set_default_color_theme("blue")
+
         self.title("Income & Expenditure Management System")
         self.geometry("500x420")
         self.resizable(False, False)
-
-        ctk.set_appearance_mode("Light")
-        ctk.set_default_color_theme("blue")
 
         title = ctk.CTkLabel(
             self,
             text="Income & Expenditure\nManagement System",
             font=("Segoe UI", 24, "bold")
         )
-        title.pack(pady=(40, 20))
+        title.pack(pady=(40, 25))
 
         self.username = ctk.CTkEntry(
             self,
-            width=280,
+            width=300,
             placeholder_text="Username"
         )
         self.username.pack(pady=10)
 
         self.password = ctk.CTkEntry(
             self,
-            width=280,
+            width=300,
             placeholder_text="Password",
             show="*"
         )
@@ -45,14 +45,14 @@ class LoginView(ctk.CTk):
         )
         self.status.pack()
 
-        login_button = ctk.CTkButton(
+        self.login_button = ctk.CTkButton(
             self,
             text="Login",
-            width=200,
+            width=220,
             command=self.login
         )
 
-        login_button.pack(pady=20)
+        self.login_button.pack(pady=25)
 
         self.bind("<Return>", lambda event: self.login())
 
@@ -62,25 +62,38 @@ class LoginView(ctk.CTk):
         password = self.password.get()
 
         if not username or not password:
-            self.status.configure(text="Please enter username and password.")
-            return
-
-        if AuthService.login(username, password):
-
-            messagebox.showinfo(
-                "Success",
-                f"Welcome {username}!"
-            )
-
-            self.destroy()
-
-            from views.main_shell import MainShell
-
-            app = MainShell()
-            app.mainloop()
-
-        else:
 
             self.status.configure(
-                text="Invalid username or password."
+                text="Please enter your username and password."
             )
+
+            return
+
+        self.login_button.configure(state="disabled")
+
+        try:
+
+            if AuthService.login(username, password):
+
+                messagebox.showinfo(
+                    "Login Successful",
+                    f"Welcome, {username}!"
+                )
+
+                self.destroy()
+
+                from views.main_shell import MainShell
+
+                app = MainShell()
+
+                app.mainloop()
+
+            else:
+
+                self.status.configure(
+                    text="Invalid username or password."
+                )
+
+        finally:
+
+            self.login_button.configure(state="normal")

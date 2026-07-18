@@ -1,6 +1,6 @@
 class Session:
     """
-    Stores the currently logged-in user.
+    Stores information about the currently logged-in user.
     """
 
     current_user = None
@@ -18,13 +18,29 @@ class Session:
         return cls.current_user is not None
 
     @classmethod
+    def get_user(cls):
+        return cls.current_user
+
+    @classmethod
     def username(cls):
-        if cls.current_user:
-            return cls.current_user["username"]
-        return ""
+        return cls.current_user["username"] if cls.current_user else ""
+
+    @classmethod
+    def full_name(cls):
+        return cls.current_user["full_name"] if cls.current_user else ""
 
     @classmethod
     def role(cls):
-        if cls.current_user:
-            return cls.current_user["role"]
-        return ""
+        return cls.current_user["role"] if cls.current_user else ""
+
+    @classmethod
+    def is_admin(cls):
+        return cls.role() == "Admin"
+
+    @classmethod
+    def is_accountant(cls):
+        return cls.role() == "Accountant"
+
+    @classmethod
+    def is_manager(cls):
+        return cls.role() == "Manager"

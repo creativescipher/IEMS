@@ -23,8 +23,9 @@ class AuthService:
             return False
 
         if not PasswordService.verify_password(
-                password,
-                user["password_hash"]):
+            password,
+            user["password_hash"]
+        ):
             logger.warning("Invalid password.")
             return False
 
@@ -49,6 +50,8 @@ class AuthService:
                 "LOGOUT"
             )
 
-        Session.logout()
+            logger.info(
+                f"{Session.current_user['username']} logged out."
+            )
 
-        logger.info("User logged out.")
+        Session.logout()
