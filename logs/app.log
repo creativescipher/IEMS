@@ -1,0 +1,44 @@
+2026-07-18 13:52:52,376 | INFO | app | ============================================================
+2026-07-18 13:52:52,377 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 13:52:52,378 | INFO | connection | Database connection successful.
+2026-07-18 13:52:52,379 | INFO | app | Application initialized successfully.
+2026-07-18 13:52:52,379 | INFO | app | M0 smoke test completed successfully.
+2026-07-18 13:52:52,379 | INFO | app | Application shutting down.
+2026-07-18 13:52:52,379 | INFO | app | ============================================================
+2026-07-18 14:01:09,541 | INFO | app | ============================================================
+2026-07-18 14:01:09,541 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 14:01:09,547 | INFO | connection | Database connection successful.
+2026-07-18 14:01:09,549 | INFO | app | Application initialized successfully.
+2026-07-18 14:01:09,552 | INFO | app | M0 smoke test completed successfully.
+2026-07-18 14:01:09,554 | INFO | app | Application shutting down.
+2026-07-18 14:01:09,554 | INFO | app | ============================================================
+2026-07-18 14:01:34,846 | INFO | app | ============================================================
+2026-07-18 14:01:34,847 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 14:01:34,848 | INFO | connection | Database connection successful.
+2026-07-18 14:01:34,848 | INFO | app | Application initialized successfully.
+2026-07-18 14:01:34,849 | INFO | app | M0 smoke test completed successfully.
+2026-07-18 14:01:34,849 | INFO | app | Application shutting down.
+2026-07-18 14:01:34,849 | INFO | app | ============================================================
+2026-07-18 14:06:00,853 | INFO | __main__ | ============================================================
+2026-07-18 14:06:00,853 | INFO | __main__ | Starting Income & Expenditure Management System
+2026-07-18 14:06:00,859 | INFO | root | Database connection successful.
+2026-07-18 14:06:00,860 | INFO | __main__ | Application initialized successfully.
+2026-07-18 14:06:00,860 | INFO | __main__ | M0 smoke test completed successfully.
+2026-07-18 14:06:00,861 | INFO | __main__ | Application shutting down.
+2026-07-18 14:06:00,861 | INFO | __main__ | ============================================================
+2026-07-18 14:06:39,998 | INFO | __main__ | ============================================================
+2026-07-18 14:06:39,998 | INFO | __main__ | Starting Income & Expenditure Management System
+2026-07-18 14:06:39,999 | INFO | database.connection | Database connection successful.
+2026-07-18 14:06:40,000 | INFO | __main__ | Application initialized successfully.
+2026-07-18 14:06:40,000 | INFO | __main__ | M0 smoke test completed successfully.
+2026-07-18 14:06:40,000 | INFO | __main__ | Application shutting down.
+2026-07-18 14:06:40,000 | INFO | __main__ | ============================================================
+2026-07-18 14:14:33,788 | INFO | app | ============================================================
+2026-07-18 14:14:33,789 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 14:14:33,799 | INFO | database.connection | Database connection successful.
+2026-07-18 14:14:33,911 | INFO | database.schema | Database schema initialized successfully.
+2026-07-18 14:14:33,911 | INFO | app | Database initialized.
+2026-07-18 14:14:33,912 | INFO | app | Application initialized successfully.
+2026-07-18 14:14:33,912 | INFO | app | M1 completed successfully.
+2026-07-18 14:14:33,912 | INFO | app | Application shutting down.
+2026-07-18 14:14:33,913 | INFO | app | ============================================================
