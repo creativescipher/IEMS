@@ -42,3 +42,39 @@
 2026-07-18 14:14:33,912 | INFO | app | M1 completed successfully.
 2026-07-18 14:14:33,912 | INFO | app | Application shutting down.
 2026-07-18 14:14:33,913 | INFO | app | ============================================================
+2026-07-18 14:30:48,374 | INFO | app | ============================================================
+2026-07-18 14:30:48,375 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 14:30:48,375 | INFO | database.manager | Initializing database...
+2026-07-18 14:30:48,381 | INFO | database.connection | Database connection successful.
+2026-07-18 14:30:48,400 | INFO | database.schema | Database schema initialized successfully.
+2026-07-18 14:30:48,730 | INFO | database.seeders.admin | Default administrator created.
+2026-07-18 14:30:48,741 | INFO | database.seeders.categories | Default categories seeded.
+2026-07-18 14:30:48,756 | INFO | database.seeders.settings | System settings seeded.
+2026-07-18 14:30:48,762 | ERROR | app | Application startup failed.
+Traceback (most recent call last):
+  File "C:\Users\Toluwani\Documents\IEMS\app.py", line 22, in main
+    DatabaseManager.initialize()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Toluwani\Documents\IEMS\database\manager.py", line 37, in initialize
+    version.seed()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Toluwani\Documents\IEMS\database\seeders\version.py", line 12, in seed
+    cursor.execute("SELECT COUNT(*) FROM schema_version")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: schema_version
+2026-07-18 14:30:48,771 | INFO | app | Application shutting down.
+2026-07-18 14:30:48,774 | INFO | app | ============================================================
+2026-07-18 17:11:00,089 | INFO | app | ============================================================
+2026-07-18 17:11:00,090 | INFO | app | Starting Income & Expenditure Management System
+2026-07-18 17:11:00,090 | INFO | database.manager | Initializing database...
+2026-07-18 17:11:00,091 | INFO | database.connection | Database connection successful.
+2026-07-18 17:11:00,218 | INFO | database.schema | Database schema initialized successfully.
+2026-07-18 17:11:00,544 | INFO | database.seeders.admin | Default administrator created.
+2026-07-18 17:11:00,562 | INFO | database.seeders.categories | Default categories seeded.
+2026-07-18 17:11:00,572 | INFO | database.seeders.settings | System settings seeded.
+2026-07-18 17:11:00,580 | INFO | database.seeders.version | Schema version initialized.
+2026-07-18 17:11:00,581 | INFO | database.manager | Database initialization completed successfully.
+2026-07-18 17:11:00,581 | INFO | app | Application initialized successfully.
+2026-07-18 17:11:00,582 | INFO | app | M1 completed successfully.
+2026-07-18 17:11:00,582 | INFO | app | Application shutting down.
+2026-07-18 17:11:00,582 | INFO | app | ============================================================
