@@ -78,3 +78,6 @@ sqlite3.OperationalError: no such table: schema_version
 2026-07-18 17:11:00,582 | INFO | app | M1 completed successfully.
 2026-07-18 17:11:00,582 | INFO | app | Application shutting down.
 2026-07-18 17:11:00,582 | INFO | app | ============================================================
+2026-07-18 17:38:24,454 | WARNING | services.auth_service | Invalid password.
+2026-07-18 17:38:39,618 | INFO | services.auth_service | admin logged in.
+2026-07-18 17:39:04,756 | INFO | services.auth_service | admin logged in.
