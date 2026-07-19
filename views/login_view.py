@@ -51,7 +51,6 @@ class LoginView(ctk.CTk):
             width=220,
             command=self.login
         )
-
         self.login_button.pack(pady=25)
 
         self.bind("<Return>", lambda event: self.login())
@@ -61,39 +60,43 @@ class LoginView(ctk.CTk):
         username = self.username.get().strip()
         password = self.password.get()
 
-        if not username or not password:
+        self.status.configure(text="")
 
+        if not username or not password:
             self.status.configure(
                 text="Please enter your username and password."
             )
-
             return
 
         self.login_button.configure(state="disabled")
 
-        try:
+        if AuthService.login(username, password):
 
-            if AuthService.login(username, password):
+            messagebox.showinfo(
+                "Login Successful",
+                f"Welcome, {username}!"
+            )
 
-                messagebox.showinfo(
-                    "Login Successful",
-                    f"Welcome, {username}!"
-                )
+            self.open_main()
 
-                self.destroy()
+        else:
 
-                from views.main_shell import MainShell
-
-                app = MainShell()
-
-                app.mainloop()
-
-            else:
-
-                self.status.configure(
-                    text="Invalid username or password."
-                )
-
-        finally:
+            self.status.configure(
+                text="Invalid username or password."
+            )
 
             self.login_button.configure(state="normal")
+
+    def open_main(self):
+
+        from views.main_shell import MainShell
+
+        # Hide the login window instead of destroying it
+        self.withdraw()
+
+        shell = MainShell()
+
+        shell.mainloop()
+
+        # If the shell closes, close the login window too
+        self.destroy()

@@ -1,85 +1,125 @@
 import customtkinter as ctk
 
-from services.session import Session
+from config import theme
+
 from services.auth_service import AuthService
+
+from views.widgets.sidebar import Sidebar
+from views.widgets.header import Header
+
+from views.pages.dashboard_page import DashboardPage
+from views.pages.income_page import IncomePage
+from views.pages.expenditure_page import ExpenditurePage
+from views.pages.reports_page import ReportsPage
+from views.pages.users_page import UsersPage
+from views.pages.settings_page import SettingsPage
 
 
 class MainShell(ctk.CTk):
 
     def __init__(self):
+
         super().__init__()
 
-        self.title("Income & Expenditure Management System")
-        self.geometry("1100x700")
-        self.minsize(1000, 650)
+        self.title(theme.APP_TITLE)
+        self.geometry(
+            f"{theme.WINDOW_WIDTH}x{theme.WINDOW_HEIGHT}"
+        )
 
-        # ---------- Header ----------
+        self.configure(
+            fg_color=theme.BACKGROUND
+        )
 
-        header = ctk.CTkFrame(self, height=70)
-        header.pack(fill="x")
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(1, weight=1)
 
-        ctk.CTkLabel(
-            header,
-            text="Income & Expenditure Management System",
-            font=("Segoe UI", 24, "bold")
-        ).pack(side="left", padx=20, pady=15)
+        # ---------------- Header ----------------
 
-        ctk.CTkButton(
-            header,
-            text="Logout",
-            width=120,
-            command=self.logout
-        ).pack(side="right", padx=20)
+        self.header = Header(
+            self,
+            self.logout
+        )
 
-        # ---------- Main ----------
+        self.header.grid(
+            row=0,
+            column=0,
+            columnspan=2,
+            sticky="ew"
+        )
 
-        body = ctk.CTkFrame(self)
-        body.pack(fill="both", expand=True)
+        # ---------------- Sidebar ----------------
 
-        # Sidebar
+        self.sidebar = Sidebar(
+            self,
+            self.show_page
+        )
 
-        sidebar = ctk.CTkFrame(body, width=220)
-        sidebar.pack(side="left", fill="y")
+        self.sidebar.grid(
+            row=1,
+            column=0,
+            sticky="ns"
+        )
 
-        menu = [
-            "Dashboard",
-            "Income",
-            "Expenditure",
-            "Reports",
-            "Users",
-            "Settings"
-        ]
+        # ---------------- Content ----------------
 
-        for item in menu:
+        self.content = ctk.CTkFrame(
+            self,
+            fg_color=theme.BACKGROUND
+        )
 
-            ctk.CTkButton(
-                sidebar,
-                text=item,
-                width=180
-            ).pack(pady=8, padx=15)
+        self.content.grid(
+            row=1,
+            column=1,
+            sticky="nsew"
+        )
 
-        # Content Area
+        self.current_page = None
 
-        self.content = ctk.CTkFrame(body)
-        self.content.pack(side="left", fill="both", expand=True)
+        self.show_page("dashboard")
 
-        ctk.CTkLabel(
-            self.content,
-            text=f"Welcome, {Session.full_name()}",
-            font=("Segoe UI", 28, "bold")
-        ).pack(pady=(50, 10))
+    # =======================================
 
-        ctk.CTkLabel(
-            self.content,
-            text=f"Username: {Session.username()}",
-            font=("Segoe UI", 18)
-        ).pack()
+    def clear_page(self):
 
-        ctk.CTkLabel(
-            self.content,
-            text=f"Role: {Session.role()}",
-            font=("Segoe UI", 18)
-        ).pack()
+        if self.current_page:
+
+            self.current_page.destroy()
+
+    # =======================================
+
+    def show_page(self, page):
+
+        self.clear_page()
+
+        pages = {
+
+            "dashboard": DashboardPage,
+
+            "income": IncomePage,
+
+            "expenditure": ExpenditurePage,
+
+            "reports": ReportsPage,
+
+            "users": UsersPage,
+
+            "settings": SettingsPage
+        }
+
+        page_class = pages.get(page)
+
+        if page_class:
+
+            self.current_page = page_class(
+                self.content
+            )
+
+            self.current_page.pack(
+                fill="both",
+                expand=True
+            )
+
+    # =======================================
 
     def logout(self):
 
